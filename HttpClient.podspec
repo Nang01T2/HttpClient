@@ -5,11 +5,10 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
     Your description here.
   DESC
-  s.source       = { :git => ".git", :tag => s.version }
-  s.homepage     = ""
+  s.source       = { :git => "https://github.com/Nang01T2/HttpClient.git", :tag => s.version }
+  s.homepage     = "https://github.com/Nang01T2/HttpClient"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = "Nang Nguyen"
-  s.social_media_url   = ""
 
   s.swift_version = '5.0'
 
@@ -19,11 +18,6 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = "10.0"
 
   s.source_files  = "Sources/**/*"
-  s.resource_bundles = {
-    'HttpClient' => [
-        'Sources/*.xcassets'
-    ]
-  }
 
   s.dependency 'Moya'
   s.dependency 'RxSwift'

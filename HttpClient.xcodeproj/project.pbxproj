@@ -65,6 +65,7 @@
 		5C64434F22C209CD00EDF4D7 /* GenresRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresRequest.swift; sourceTree = "<group>"; };
 		5C64435122C20DA100EDF4D7 /* PopularMoviesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesRequest.swift; sourceTree = "<group>"; };
 		5C64435322C20DEC00EDF4D7 /* MovieDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBService.swift; sourceTree = "<group>"; };
+		5C64435522C2266900EDF4D7 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		5CE4577F22C0BC6B00521430 /* HttpClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HttpClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE4578222C0BC6C00521430 /* HttpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
 		5CE4578322C0BC6C00521430 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -252,6 +253,7 @@
 		5CE457B922C0D18700521430 /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				5C64435522C2266900EDF4D7 /* LICENSE */,
 				5C6442D522C1CAAA00EDF4D7 /* Package.swift */,
 				5CE457BA22C0D22D00521430 /* HttpClient.podspec */,
 			);
