@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = "3.0"
   s.tvos.deployment_target = "10.0"
 
-  s.source_files  = "Sources/**/*"
+  s.source_files  = "Sources/**/*.{h,swift,m}"
 
   s.dependency 'Moya'
   s.dependency 'RxSwift'
