@@ -7,6 +7,7 @@
 
 import Foundation
 import HttpClient
+import PromiseKit
 
 class MoviewDBService {
     
@@ -15,6 +16,18 @@ class MoviewDBService {
         HTTPRequester.default.requestDecodable(request) { (result: HTTPResult<Movies>) in
             let result = result.map { moviesList in moviesList.results }
             completion(result)
+        }
+    }
+    
+    func fetchMovies(page: Int) -> Promise<[Movie]> {
+        return Promise { seal in
+            let request = PopularMoviesRequest(page: page)
+            HTTPRequester.default.requestDecodable(request)
+                .done { (result: Movies) in
+                    seal.fulfill(result.results)
+                }.catch { (error) in
+                    seal.reject(error)
+                }
         }
     }
     

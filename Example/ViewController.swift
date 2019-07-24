@@ -14,23 +14,30 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let demoService = MoviewDBService()
-        demoService.fetchGenres { (result) in
-            switch result {
-            case .success(let value):
-                print("Result: \(value)")
-            case .failure(let error):
-                print("Error: \(error)")
-            }
-        }
+//        demoService.fetchGenres { (result) in
+//            switch result {
+//            case .success(let value):
+//                print("Result: \(value)")
+//            case .failure(let error):
+//                print("Error: \(error)")
+//            }
+//        }
         
-        demoService.fetchMovies(page: 1) { (result) in
-            switch result {
-            case .success(let value):
-                print("Result: \(value)")
-            case .failure(let error):
-                print("Error: \(error)")
+//        demoService.fetchMovies(page: 1) { (result) in
+//            switch result {
+//            case .success(let value):
+//                print("Result: \(value)")
+//            case .failure(let error):
+//                print("Error: \(error)")
+//            }
+//        }
+        
+        demoService.fetchMovies(page: 1)
+            .done { (result) in
+                print("Result: \(result)")
+            }.catch { (err) in
+                print("Error: \(err)")
             }
-        }
     }
 
 

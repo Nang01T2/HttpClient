@@ -22,4 +22,5 @@ Pod::Spec.new do |s|
   s.dependency 'Moya'
   s.dependency 'RxSwift'
   s.dependency 'RxCocoa'
+  s.dependency 'PromiseKit'
 end

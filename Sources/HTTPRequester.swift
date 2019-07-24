@@ -9,6 +9,7 @@ import Foundation
 import Moya
 import Alamofire
 import RxSwift
+import PromiseKit
 
 public protocol HTTPRequesterProtocol {
     func requestSimple(_ request: TargetType, _ completion: @escaping Completion)
@@ -19,6 +20,9 @@ public protocol HTTPRequesterProtocol {
     func requestSimple(_ request: TargetType) -> Observable<Response>
     func requestDecodable<T: Decodable>(_ request: TargetType, decoder: AnyDecoder) -> Observable<T>
     func requestObject<T: Parceable>(_ request: TargetType) -> Observable<T>
+    
+    // MARK: Promise-related methods
+    func requestDecodable<T: Decodable>(_ request: TargetType, decoder: AnyDecoder) -> Promise<T>
 }
 
 public class HTTPRequester: HTTPRequesterProtocol {
@@ -207,6 +211,27 @@ public extension HTTPRequester {
             }
             return Disposables.create {
                 cancellableToken.cancel()
+            }
+        }
+    }
+}
+
+/// MARK: Promise-related methods
+public extension HTTPRequester {
+    func requestDecodable<T: Decodable>(_ request: TargetType, decoder: AnyDecoder = JSONDecoder()) -> Promise<T> {
+        return Promise { seal in
+            provider.request(MultiTarget(request)) { (result) in
+                switch result {
+                case .success(let response):
+                    do {
+                        let data = try response.data.decoded(using: decoder) as T
+                        seal.fulfill(data)
+                    } catch {
+                        seal.reject(error)
+                    }
+                case .failure(let error):
+                    seal.reject(error)
+                }
             }
         }
     }
